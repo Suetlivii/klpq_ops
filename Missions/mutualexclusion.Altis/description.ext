@@ -1,0 +1,87 @@
+class Header {
+    gameType = Coop;
+    minPlayers = 1;
+    maxPlayers = 128;
+};
+
+saving = 0;
+disabledAI = 1;
+enableDebugConsole = 1;
+forceRotorLibSimulation = 2;
+
+respawnDialog = 0;
+respawnButton = 1;
+respawn = 3;
+respawnDelay = 30;
+respawnTemplates[] = {};
+
+onLoadName = "Mutual Exclusion";
+onLoadMission = "";
+author = "havk";
+loadScreen = "klpq_framework\logo.paa";
+overviewPicture = "klpq_framework\logo.paa";
+
+cba_settings_hasSettingsFile = 1;
+
+#include "kf_ai.hpp"
+
+class CfgDebriefing {
+    class KF_Completed {
+        title = "Mission Completed!";
+        subtitle = "Good Job!";
+        description = "";
+    };
+    class KF_Failed {
+        title = "Mission Failed!";
+        subtitle = "Come On, Guys.";
+        description = "";
+    };
+};
+
+class Params {
+    class AddVirtualArsenal {
+        title = "Add Virtual Arsenal";
+        texts[] = {"Default","Yes"};
+        values[] = {0,1};
+        default = 0;
+    };
+    class AddZeus {
+        title = "Add Zeus";
+        texts[] = {"Default","Yes"};
+        values[] = {0,1};
+        default = 1;
+    };
+};
+
+class CfgFunctions {
+    class MF {
+        class loadouts {
+            file = "mission\loadouts";
+
+            class loadoutWest {};
+            class loadoutEast {};
+            class loadoutGuer {};
+            class loadoutCiv {};
+        };
+
+        class mission {
+            file = "mission";
+
+            class settings {preInit = 1;};
+        };
+    };
+    class KIB{    
+    class mission {
+        file = "mission";                     
+        class kib_markers {};        
+        class addVehicleRespawnWithMarker {};                   
+        };        
+    };
+};
+
+class CfgDebriefingSections {
+    class FrameworkDebriefingScreen {
+        title = "Debriefing Stats";
+        variable = "mf_debriefingText";
+    };
+};
